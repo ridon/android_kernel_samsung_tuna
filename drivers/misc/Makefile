@@ -64,3 +64,4 @@ obj-$(CONFIG_GCBV)		+= gcx/gcbv/
 obj-$(CONFIG_GCIOCTL)		+= gcx/gcioctl/
 obj-$(CONFIG_CACHE2DMANAGER)	+= cache-2dmanager/
 obj-$(CONFIG_BLX)		+= blx.o
+obj-$(CONFIG_OMAP_TEMP_CONTROL)	+= temp_control.o
