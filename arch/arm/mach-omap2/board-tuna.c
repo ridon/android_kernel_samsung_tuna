@@ -131,6 +131,7 @@ static const char const *omap4_tuna_hw_name_toro[] = {
 	[0x06] = "Toro 8th Sample",
 	[0x08] = "Toro 8th Sample",
 	[0x09] = "Toro 8-1th Sample",
+	[0x0a] = "Toro 16GB 8-1th Sample",
 	[0x0e] = "Toro Plus 1st Sample",
 };
 
@@ -287,7 +288,7 @@ static struct platform_device tuna_gpio_i2c5_device = {
 #define PHYS_ADDR_DUCATI_SIZE			(SZ_1M * 105)
 #define OMAP_TUNA_ION_HEAP_SECURE_INPUT_SIZE	(SZ_1M * 90)
 #ifdef CONFIG_TUNA_BIGMEM
-#define OMAP_TUNA_ION_HEAP_TILER_SIZE		(SZ_1M * 20)
+#define OMAP_TUNA_ION_HEAP_TILER_SIZE		(SZ_1M * 26)
 #else
 #define OMAP_TUNA_ION_HEAP_TILER_SIZE		(SZ_1M * 81)
 #endif
