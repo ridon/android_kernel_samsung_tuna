@@ -251,7 +251,7 @@ struct omap_volt_data omap446x_vdd_iva_volt_data[] = {
 
 #define OMAP4460_VDD_CORE_OPP50_UV		 962000
 #define OMAP4460_VDD_CORE_OPP100_UV		1127000
-#define OMAP4460_VDD_CORE_OPP100_OV_UV		1250000
+#define OMAP4460_VDD_CORE_OPP100_OV_UV		1185000
 
 #ifdef CONFIG_OMAP_SMARTREFLEX_CUSTOM_SENSOR
 struct omap_volt_data omap446x_vdd_core_volt_data[] = {
