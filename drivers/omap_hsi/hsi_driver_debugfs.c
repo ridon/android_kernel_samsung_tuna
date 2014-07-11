@@ -391,11 +391,7 @@ static ssize_t hsi_port_counters_write(struct file *filep,
 			ret = -EINVAL;
 			goto hsi_cnt_w_bk1;
 		}
-		if (strict_strtoul(words[0], 0, &reg)) {
-			dev_warn(hsi_ctrl->dev, "Not an unsigned long\n");
-			ret = -EINVAL;
-			goto hsi_cnt_w_bk1;
-		}
+		strict_strtoul(words[0], 0, &reg);
 		reg = clamp_val(reg, 0,
 			(HSI_SSI_RX_TIMEOUT_MASK >> HSI_SSI_RX_TIMEOUT_OFFSET));
 	}
