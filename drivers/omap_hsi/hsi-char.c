@@ -45,7 +45,7 @@
 
 #include "hsi-char.h"
 
-#define DRIVER_VERSION  "0.2.4"
+#define DRIVER_VERSION  "0.2.3"
 #define HSI_CHAR_DEVICE_NAME  "hsi_char"
 
 static unsigned int port = 1;
@@ -360,7 +360,7 @@ static long  hsi_char_ioctl(struct file *file,
 {
 	int ch = (int)file->private_data;
 	unsigned int state;
-	size_t size;
+	size_t occ;
 	struct hsi_rx_config rx_cfg;
 	struct hsi_tx_config tx_cfg;
 	int ret = 0;
@@ -372,14 +372,10 @@ static long  hsi_char_ioctl(struct file *file,
 		if_hsi_send_break(ch);
 		break;
 	case CS_FLUSH_RX:
-		if_hsi_flush_rx(ch, &size);
-		if (copy_to_user((void __user *)arg, &size, sizeof(size)))
-			ret = -EFAULT;
+		if_hsi_flush_rx(ch);
 		break;
 	case CS_FLUSH_TX:
-		if_hsi_flush_tx(ch, &size);
-		if (copy_to_user((void __user *)arg, &size, sizeof(size)))
-			ret = -EFAULT;
+		if_hsi_flush_tx(ch);
 		break;
 	case CS_SET_ACWAKELINE:
 		if (copy_from_user(&state, (void __user *)arg, sizeof(state)))
@@ -429,8 +425,8 @@ static long  hsi_char_ioctl(struct file *file,
 		if_hsi_sw_reset(ch);
 		break;
 	case CS_GET_FIFO_OCCUPANCY:
-		if_hsi_get_fifo_occupancy(ch, &size);
-		if (copy_to_user((void __user *)arg, &size, sizeof(size)))
+		if_hsi_get_fifo_occupancy(ch, &occ);
+		if (copy_to_user((void __user *)arg, &occ, sizeof(occ)))
 			ret = -EFAULT;
 		break;
 	default:
