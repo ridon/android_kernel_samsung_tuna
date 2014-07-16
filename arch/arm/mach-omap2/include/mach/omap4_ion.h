@@ -20,7 +20,11 @@
 #include <linux/ion.h>
 
 #define OMAP4_ION_HEAP_SECURE_INPUT_SIZE	(SZ_1M * 90)
+#ifdef CONFIG_TUNA_BIGMEM
+#define OMAP4_ION_HEAP_TILER_SIZE		(SZ_1M * 32)
+#else
 #define OMAP4_ION_HEAP_TILER_SIZE		(SZ_1M * 81)
+#endif
 #define OMAP4_ION_HEAP_NONSECURE_TILER_SIZE	(SZ_1M * 15)
 
 #define PHYS_ADDR_SMC_SIZE	(SZ_1M * 3)

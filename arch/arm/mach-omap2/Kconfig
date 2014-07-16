@@ -265,4 +265,12 @@ config OMAP4_HSOTG_ED_CORRECTION
 
 endmenu
 
+config TUNA_BIGMEM
+	bool "Additional ~50MB of RAM for Tuna-based devices"
+	depends on MACH_TUNA
+	default n
+	help
+	  Reclaims ~50MB of RAM from the ion carveouts. This has a chance of
+	  instability with 1080p video capture, so this is disabled by default.
+
 endif
