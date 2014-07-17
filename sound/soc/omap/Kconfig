@@ -158,6 +158,10 @@ config SND_OMAP4_ABE_USE_ALT_FW
 	  Say Y if you have DMICs (Digital Microphones) that you wish to use.
 	  Say N otherwise, or if unsure.
 
+config SND_OMAP_SOC_AUDCTRL
+	tristate "OMAP Audio Control"
+	depends on SND_OMAP_SOC && SND_OMAP_SOC_ABE_DSP
+
 config SND_OMAP_SOC_OMAP3_PANDORA
 	tristate "SoC Audio support for OMAP3 Pandora"
 	depends on TWL4030_CORE && SND_OMAP_SOC && MACH_OMAP3_PANDORA

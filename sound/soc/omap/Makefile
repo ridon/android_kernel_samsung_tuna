@@ -8,6 +8,7 @@ snd-soc-omap-abe-objs := omap-abe.o
 snd-soc-omap-abe-dsp-objs := omap-abe-dsp.o
 snd-soc-omap-hdmi-objs := omap-hdmi.o
 snd-soc-omap-vxrec-objs := omap-vxrec.o
+snd-soc-omap-audio-control-objs := omap-audio-control.o
 
 obj-$(CONFIG_SND_OMAP_SOC) += snd-soc-omap.o
 obj-$(CONFIG_SND_OMAP_SOC_MCASP) += snd-soc-omap-mcasp.o
@@ -18,6 +19,7 @@ obj-$(CONFIG_SND_OMAP_SOC_ABE) += snd-soc-omap-abe.o
 obj-$(CONFIG_SND_OMAP_SOC_ABE_DSP) += snd-soc-omap-abe-dsp.o abe/
 obj-$(CONFIG_SND_OMAP_SOC_HDMI) += snd-soc-omap-hdmi.o
 obj-$(CONFIG_SND_OMAP_SOC_VXREC) += snd-soc-omap-vxrec.o
+obj-$(CONFIG_SND_OMAP_SOC_AUDCTRL) += snd-soc-omap-audio-control.o
 
 # OMAP Machine Support
 snd-soc-n810-objs := n810.o
