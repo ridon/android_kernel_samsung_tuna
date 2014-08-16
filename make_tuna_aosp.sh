@@ -47,7 +47,11 @@ BOOTIMG_TOOLS=./ramdisk-tools
 mkdir -p $BOOTIMG_TOOLS/boot/ramdisk
 rm $BOOTIMG_TOOLS/boot/*
 rm -rf $BOOTIMG_TOOLS/boot/ramdisk/*
+<<<<<<< HEAD
 cp -rf ./ramdisk_tuna_cm/* $BOOTIMG_TOOLS/boot/ramdisk/
+=======
+cp -rf ./ramdisk_tuna_aosp_kk/* $BOOTIMG_TOOLS/boot/ramdisk/
+>>>>>>> parent of 84bb775... Add Omni ramdisk and use it by default
 
 # repack ramdisk
 $BOOTIMG_TOOLS/repack_ramdisk $BOOTIMG_TOOLS/boot/ramdisk
