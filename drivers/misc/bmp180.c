@@ -233,7 +233,6 @@ static void bmp180_get_pressure_data(struct work_struct *work)
 	unsigned long b4, b7;
 	long p;
 	int pressure;
-	int err;
 	int temperature;
 
 	struct bmp180_data *barom =
