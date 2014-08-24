@@ -460,7 +460,7 @@ CONFIG_ARM_FLUSH_CONSOLE_ON_RESTART=y
 # CONFIG_USE_OF is not set
 CONFIG_ZBOOT_ROM_TEXT=0
 CONFIG_ZBOOT_ROM_BSS=0
-CONFIG_CMDLINE="console=ttyFIQ0 androidboot.console=ttyFIQ0 mem=1G vmalloc=768M omap_wdt.timer_margin=30 no_console_suspend"
+CONFIG_CMDLINE="console=ttyFIQ0 androidboot.console=ttyFIQ0 mem=1G vmalloc=768M omap_wdt.timer_margin=30 no_console_suspend androidboot.selinux=permissive"
 # CONFIG_CMDLINE_FROM_BOOTLOADER is not set
 CONFIG_CMDLINE_EXTEND=y
 # CONFIG_CMDLINE_FORCE is not set
@@ -1141,10 +1141,8 @@ CONFIG_CDMA_LINK_DPRAM=y
 CONFIG_CDMA_MODEM_CBP71=y
 CONFIG_LTE_LINK_USB=y
 CONFIG_LTE_MODEM_CMC221=y
-CONFIG_GCCORE=y
-CONFIG_GCIOCTL=y
-CONFIG_GCBV=y
-CONFIG_CACHE2DMANAGER=y
+# CONFIG_GCCORE is not set
+# CONFIG_CACHE2DMANAGER is not set
 CONFIG_HAVE_IDE=y
 # CONFIG_IDE is not set
 
