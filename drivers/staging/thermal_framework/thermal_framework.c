@@ -27,6 +27,8 @@
 
 #include <linux/thermal_framework.h>
 
+/*#define THERM_VERBOSE*/
+
 static LIST_HEAD(thermal_domain_list);
 static DEFINE_MUTEX(thermal_domain_list_lock);
 
@@ -187,7 +189,9 @@ int thermal_sensor_set_temp(struct thermal_dev *tdev)
 
 	thermal_domain = tdev->domain;
 	if (!thermal_domain) {
+#ifdef THERM_VERBOSE
 		pr_err("%s: device not part of a domain\n", __func__);
+#endif
 		goto out;
 	}
 
@@ -224,14 +228,18 @@ int thermal_request_temp(struct thermal_dev *tdev)
 
 	thermal_domain = tdev->domain;
 	if (!thermal_domain) {
+#ifdef THERM_VERBOSE
 		pr_err("%s: device not part of a domain\n", __func__);
+#endif
 		return ret;
 	}
 
 	ret = thermal_device_call(tdev, report_temp);
 	if (ret < 0) {
+#ifdef THERM_VERBOSE
 		pr_err("%s: getting temp is not supported for domain %s\n",
 			__func__, thermal_domain->domain_name);
+#endif
 		ret = -EOPNOTSUPP;
 	}
 	return ret;
@@ -254,7 +262,9 @@ static int thermal_init_thermal_state(struct thermal_dev *tdev)
 
 	domain = tdev->domain;
 	if (!domain) {
+#ifdef THERM_VERBOSE
 		pr_err("%s: device not part of a domain\n", __func__);
+#endif
 		return -ENODEV;
 	}
 
@@ -323,14 +333,18 @@ int thermal_lookup_temp(const char *name)
 
 	thermal_domain = thermal_domain_find(name);
 	if (!thermal_domain) {
+#ifdef THERM_VERBOSE
 		pr_err("%s: %s is a non existing domain\n", __func__, name);
+#endif
 		return ret;
 	}
 
 	ret = thermal_device_call(thermal_domain->temp_sensor, report_temp);
 	if (ret < 0) {
+#ifdef THERM_VERBOSE
 		pr_err("%s: getting temp is not supported for domain %s\n",
 			__func__, thermal_domain->domain_name);
+#endif
 		ret = -EOPNOTSUPP;
 	}
 	return ret;
