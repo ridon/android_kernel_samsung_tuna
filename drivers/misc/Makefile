@@ -63,6 +63,5 @@ obj-$(CONFIG_GCCORE)		+= gcx/gccore/
 obj-$(CONFIG_GCBV)		+= gcx/gcbv/
 obj-$(CONFIG_GCIOCTL)		+= gcx/gcioctl/
 obj-$(CONFIG_CACHE2DMANAGER)	+= cache-2dmanager/
-obj-$(CONFIG_BLX)		+= blx.o
 obj-$(CONFIG_OMAP_TEMP_CONTROL)	+= temp_control.o
 obj-$(CONFIG_VIBRATOR_CONTROL)	+= vibrator_control.o
