@@ -608,4 +608,8 @@ config VIBRATOR_CONTROL
 	help
 	  Say Y here to enable Vibrator Control
 
+config CHARGER_CONTROL
+	bool "Charger Control"
+	default n
+
 endif # MISC_DEVICES
