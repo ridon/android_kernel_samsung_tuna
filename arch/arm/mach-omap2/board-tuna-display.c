@@ -29,7 +29,7 @@
 #include "control.h"
 #include "mux.h"
 
-#define TUNA_FB_RAM_SIZE		(SZ_1M * 11) // 1280 * 720 * 4 (32 bits) * 3 (triple buffering)
+#define TUNA_FB_RAM_SIZE		(SZ_16M)
 
 #define TUNA_GPIO_MLCD_RST		23
 
@@ -1029,19 +1029,36 @@ static struct omap_dss_board_info tuna_dss_data = {
 static struct omapfb_platform_data tuna_fb_pdata = {
 	.mem_desc = {
 		.region_cnt = 1,
-		.region = {
-			[0] = {
-				.size = TUNA_FB_RAM_SIZE,
-			},
-		},
 	},
+};
+
+static struct dsscomp_platform_data tuna_dsscomp_config = {
+	.tiler1d_slotsz = ( SZ_16M ),
+};
+
+#if defined(CONFIG_FB_OMAP2_NUM_FBS)
+#define OMAPLFB_NUM_DEV CONFIG_FB_OMAP2_NUM_FBS
+#else
+#define OMAPLFB_NUM_DEV 2
+#endif
+
+static struct sgx_omaplfb_config omaplfb_config_tuna[OMAPLFB_NUM_DEV] = {
+	{
+	.vram_buffers = 2,
+	.swap_chain_length = 2,
+	}
+};
+
+static struct sgx_omaplfb_platform_data tuna_omaplfb_plat_data = {
+	.num_configs = OMAPLFB_NUM_DEV,
+	.configs = omaplfb_config_tuna,
 };
 
 void tuna_android_display_setup(struct omap_ion_platform_data *ion)
 {
 	omap_android_display_setup(&tuna_dss_data,
-				   NULL,
-				   NULL,
+				   &tuna_dsscomp_config,
+				   &tuna_omaplfb_plat_data,
 				   &tuna_fb_pdata,
 				   ion);
 }
@@ -1085,6 +1102,8 @@ void __init omap4_tuna_display_init(void)
 	pr_info("Using %ps\n", panel->factory_info);
 
 	tuna_hdmi_mux_init();
+
+	omapfb_set_platform_data(&tuna_fb_pdata);
 	omap_display_init(&tuna_dss_data);
 }
 
