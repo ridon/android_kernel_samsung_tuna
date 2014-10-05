@@ -143,8 +143,12 @@ static struct omap_rproc_pdata omap4_rproc_data[] = {
 		.timers_cnt	= ARRAY_SIZE(ipu_timers),
 		.idle_addr	= OMAP4430_CM_M3_M3_CLKCTRL,
 		.idle_mask	= OMAP4430_STBYST_MASK,
-#ifdef CONFIG_MACH_TUNA
+#ifdef CONFIG_USE_TATE_DUCATI
+		.suspend_addr = 0xb8bf02d8,
+#else
+#ifdef CONFIG_USE_TUNA_DUCATI
 		.suspend_addr = 0xb3bf02d8,
+#endif
 #endif
 		.suspend_mask	= ~0,
 		.sus_timeout	= 5000,

@@ -548,6 +548,16 @@ config OMAP4460_OVERCLOCKING
 	depends on OMAP_SMARTREFLEX_CUSTOM_SENSOR
 	default n
 
+config USE_TATE_DUCATI
+	bool "Settings for the tate Ducati binary"
+	depends on MACH_TUNA
+	default n
+
+config USE_TUNA_DUCATI
+	bool "Settings for the tuna Ducati binary"
+	depends on MACH_TUNA
+	default n
+
 endmenu
 
 endif
